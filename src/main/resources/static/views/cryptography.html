@@ -1,0 +1,94 @@
+<div class="container" ng-controller="cryptoController"
+	style="margin-top: 80px;">
+	<div class="jumbotron"
+		style="background: transparent; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+		<div class="text-white myEnDeHeader"
+			style="margin-top: -78px; margin-bottom: 12px;">
+			<h4 class="text-left" style="cursor: pointer;">
+				<i class="fas fa-shield-alt" style="margin-right: 16px;"></i>Encryption
+				& Decryption Using <b>AES</b>
+			</h4>
+		</div>
+		
+		<div class="row" style="font-family: 'Roboto', sans-serif;">
+		<!--Start -of- Encryption -->
+			<div class="col-md-6 col-sm-6 col-xs-12 vertical-line"
+				style="box-shadow: 0 1px 1px rgba(0, 0, 0, .05); border-right: 2px solid green;">
+				<form role="form">
+					<h2>Online Encryption</h2>
+					<div class="form-group">
+						<label for="einputString">Enter text to be Encrypted</label>
+						<textarea id="einputString" class="form-control input-lg" rows="6"
+							ng-model="cryptoModel.originalText"
+							placeholder="Enter text to Encrypt" name="textToDecrypt"
+							required="" style="background-color: rgba(255, 255, 255, 0.8);"></textarea>
+						<p ng-hide="originalTextErr==null" style="color: red;">{{originalTextErr}}</p>
+					</div>
+					<div class="form-group">
+						<label for="secretkey">Enter Secret Key</label> <input
+							class="form-control input-lg" id="esecretkey"
+							ng-model="cryptoModel.encryptKey" placeholder="Enter secret key"
+							name="secretkey" required="">
+						<p ng-hide="encryptKeyErr==null" style="color: red;">{{encryptKeyErr}}</p>
+					</div>
+					<div class="form-group">
+						<input class="btn btn-primary btn-large" ng-click="encryptText()"
+							type="submit" value="Encrypt">
+					</div>
+
+					<div class="form-group myTextAreaDiv">
+						<label for="doutputString"><strong>Encrypted
+								Output </strong>:</label>
+						<textarea id="eoutputString" class="form-control input-lg"
+							placeholder="Result for Base64 encoded goes here"
+							ng-model="cryptoModel.encryptedText" rows="6"
+							style="cursor: copy;" readonly="true">
+						 </textarea>
+						<i class="far fa-copy copyIcon" onclick="myEnCopyFun();"
+							data-toggle="tooltip" title="Copy text"></i>
+					</div>
+				</form>
+			</div>
+			<!--End -of- Encryption -->
+
+			<!-- Decryption -->
+			<div class="col-md-6 col-sm-6 col-xs-12 vertical-line"
+				style="box-shadow: 0 1px 1px rgba(0, 0, 0, .05);">
+				<form role="form">
+					<h2>Online Decryption</h2>
+					<div class="form-group">
+						<label for="dinputString">Enter text to be Decrypted</label>
+						<textarea id="dinputString" class="form-control input-lg" rows="6"
+							ng-model="cryptoModel.tobeDecryptedText"
+							placeholder="Enter text to Decrypt" name="textToDecrypt"
+							required="" style="background-color: rgba(255, 255, 255, 0.8);"></textarea>
+						<p ng-hide="tobeDecryptedTextErr==null" style="color: red;">{{tobeDecryptedTextErr}}</p>
+					</div>
+					<div class="form-group">
+						<label for="secretkey">Enter Secret Key</label> <input
+							class="form-control input-lg" id="dsecretkey"
+							ng-model="cryptoModel.decryptKey" placeholder="Enter secret key"
+							name="secretkey" required="">
+						<p ng-hide="decryptKeyErr==null" style="color: red;">{{decryptKeyErr}}</p>
+					</div>
+					<div class="form-group">
+						<input class="btn btn-primary btn-large" ng-click="decryptText()"
+							type="submit" value="Decrypt">
+					</div>
+
+					<div class="form-group myTextAreaDiv">
+						<label for="doutputString"><strong>Decrypted
+								Output </strong>:</label>
+						<textarea id="doutputString" class="form-control input-lg"
+							placeholder="Result for Base64 decocoded goes here"
+							ng-model="cryptoModel.decryptedText" rows="6"
+							style="cursor: copy;" readonly="true"></textarea>
+						<i class="far fa-copy copyIcon" onclick="myDeCopyFun();"
+							data-toggle="tooltip" title="Copy text"></i>
+					</div>
+				</form>
+			</div>
+			<!--End -of- Decryption -->
+		</div>
+	</div>
+</div>
